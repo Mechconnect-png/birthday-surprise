@@ -10,7 +10,6 @@ import { EarthZoomScene } from './components/EarthZoomScene';
 import { BirthScene } from './components/BirthScene';
 import { CakeScene } from './components/CakeScene';
 import { LifeTimeline } from './components/LifeTimeline';
-import { MemoryGallery } from './components/MemoryGallery';
 import { LoveQuiz } from './components/LoveQuiz';
 import { LoveLetter } from './components/LoveLetter';
 import { UniverseFinale } from './components/UniverseFinale';
@@ -53,7 +52,6 @@ export default function App() {
       case 'cake_blow':
         return 0.15;
       case 'timeline':
-      case 'gallery':
       case 'love_quiz':
       case 'love_letter':
         return 0.5;
@@ -130,13 +128,6 @@ export default function App() {
           {currentScene === 'timeline' && (
             <LifeTimeline
               key="scene-timeline"
-              onComplete={() => handleSceneComplete('gallery')}
-            />
-          )}
-
-          {currentScene === 'gallery' && (
-            <MemoryGallery
-              key="scene-gallery"
               onComplete={() => handleSceneComplete('love_quiz')}
             />
           )}

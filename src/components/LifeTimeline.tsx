@@ -156,7 +156,7 @@ export const LifeTimeline: React.FC<LifeTimelineProps> = ({ onComplete }) => {
                   className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white font-medium text-sm flex items-center gap-2 shadow-lg shadow-purple-600/30 transition group active:scale-95"
                 >
                   <span>
-                    {activeIdx < items.length - 1 ? 'Next Chapter' : 'Explore Memory Gallery'}
+                    {activeIdx < items.length - 1 ? 'Next Chapter' : 'Take the Birthday Quiz'}
                   </span>
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>

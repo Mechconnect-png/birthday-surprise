@@ -9,7 +9,6 @@ export type SceneKey =
   | 'birth'
   | 'cake_blow'
   | 'timeline'
-  | 'gallery'
   | 'love_quiz'
   | 'love_letter'
   | 'universe_finale'
@@ -29,10 +28,9 @@ export const SCENES: SceneMeta[] = [
   { key: 'birth', label: 'Her Birth', act: 'Act I' },
   { key: 'cake_blow', label: 'Birthday Wish', act: 'Reveal' },
   { key: 'timeline', label: 'Her Journey', act: 'Act II' },
-  { key: 'gallery', label: 'Gallery', act: 'Act III' },
-  { key: 'love_quiz', label: 'Birthday Quiz', act: 'Act IV' },
-  { key: 'love_letter', label: 'Birthday Letter', act: 'Act V' },
-  { key: 'universe_finale', label: 'Universe Finale', act: 'Act VI' },
+  { key: 'love_quiz', label: 'Birthday Quiz', act: 'Act III' },
+  { key: 'love_letter', label: 'Birthday Letter', act: 'Act IV' },
+  { key: 'universe_finale', label: 'Universe Finale', act: 'Act V' },
   { key: 'final_surprise', label: 'Grand Surprise', act: 'Finale' },
   { key: 'final_ending', label: 'Universe Ending', act: 'Epilogue' },
 ];
