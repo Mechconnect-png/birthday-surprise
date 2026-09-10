@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, ChevronLeft, ChevronRight, MapPin, Calendar, Image as ImageIcon } from 'lucide-react';
 import { storyData, GalleryPhoto } from '../data/story';
-import { handleImageError } from '../utils/imageFallback';
+import { handleImageError, getSafeImageUrl } from '../utils/imageFallback';
 import { soundEngine } from '../utils/soundEngine';
 
 interface MemoryGalleryProps {
@@ -88,7 +88,7 @@ export const MemoryGallery: React.FC<MemoryGalleryProps> = ({ onComplete }) => {
           >
             <div className="aspect-[4/5] overflow-hidden relative">
               <img
-                src={photo.src}
+                src={getSafeImageUrl(photo.src, `gallery-${(idx % 6) + 1}`)}
                 alt={photo.title}
                 onError={(e) => handleImageError(e, `gallery-${(idx % 6) + 1}`)}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
@@ -179,7 +179,7 @@ export const MemoryGallery: React.FC<MemoryGalleryProps> = ({ onComplete }) => {
             >
               <div className="relative rounded-2xl overflow-hidden max-h-[65vh] shadow-2xl bg-black border border-white/15">
                 <img
-                  src={photos[activePhotoIdx].src}
+                  src={getSafeImageUrl(photos[activePhotoIdx].src, `gallery-${(activePhotoIdx % 6) + 1}`)}
                   alt={photos[activePhotoIdx].title}
                   onError={(e) => handleImageError(e, `gallery-${(activePhotoIdx % 6) + 1}`)}
                   className="max-h-[65vh] w-auto object-contain mx-auto"

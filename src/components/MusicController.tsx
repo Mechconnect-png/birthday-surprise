@@ -3,6 +3,7 @@ import { Volume2, VolumeX, Play, Pause, Music, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { storyData } from '../data/story';
 import { soundEngine } from '../utils/soundEngine';
+import { resolveAssetUrl } from '../utils/imageFallback';
 
 interface MusicControllerProps {
   autoPlayTrigger?: boolean;
@@ -100,7 +101,7 @@ export const MusicController: React.FC<MusicControllerProps> = ({ autoPlayTrigge
     <>
       <audio
         ref={audioRef}
-        src={storyData.favoriteSong.src}
+        src={resolveAssetUrl(storyData.favoriteSong.src)}
         loop
         preload="auto"
         onError={handleAudioError}

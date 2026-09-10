@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart, Sparkles, MessageCircle, Eye, Camera, Laugh, Smile, Compass, X, ChevronRight } from 'lucide-react';
 import { storyData, MemoryChapter } from '../data/story';
-import { handleImageError } from '../utils/imageFallback';
+import { handleImageError, getSafeImageUrl } from '../utils/imageFallback';
 import { soundEngine } from '../utils/soundEngine';
 
 interface OurStoryProps {
@@ -68,7 +68,7 @@ export const OurStory: React.FC<OurStoryProps> = ({ onComplete }) => {
             {/* Image Preview Container */}
             <div className="aspect-[16/10] rounded-2xl overflow-hidden relative mb-4 bg-[#080811]">
               <img
-                src={mem.photo}
+                src={getSafeImageUrl(mem.photo, mem.category)}
                 alt={mem.title}
                 onError={(e) => handleImageError(e, mem.category)}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -136,7 +136,7 @@ export const OurStory: React.FC<OurStoryProps> = ({ onComplete }) => {
 
               <div className="aspect-[16/9] rounded-2xl overflow-hidden mb-5 bg-[#080811]">
                 <img
-                  src={selectedMemory.photo}
+                  src={getSafeImageUrl(selectedMemory.photo, selectedMemory.category)}
                   alt={selectedMemory.title}
                   onError={(e) => handleImageError(e, selectedMemory.category)}
                   className="w-full h-full object-cover"

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, Sparkles, Heart, Calendar } from 'lucide-react';
 import { storyData } from '../data/story';
-import { handleImageError, FALLBACK_IMAGES } from '../utils/imageFallback';
+import { handleImageError, getSafeImageUrl } from '../utils/imageFallback';
 import { soundEngine } from '../utils/soundEngine';
 
 interface LifeTimelineProps {
@@ -98,7 +98,7 @@ export const LifeTimeline: React.FC<LifeTimelineProps> = ({ onComplete }) => {
               >
                 <div className="aspect-[4/5] rounded-xl overflow-hidden relative bg-[#090912]">
                   <img
-                    src={currentItem.photo}
+                    src={getSafeImageUrl(currentItem.photo, currentItem.id === 'stage-1' ? 'childhood-1' : currentItem.id === 'stage-2' ? 'childhood-2' : currentItem.id === 'stage-3' ? 'growing-up' : 'her-now')}
                     alt={currentItem.stage}
                     onError={(e) => handleImageError(e, currentItem.id === 'stage-1' ? 'childhood-1' : currentItem.id === 'stage-2' ? 'childhood-2' : currentItem.id === 'stage-3' ? 'growing-up' : 'her-now')}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"

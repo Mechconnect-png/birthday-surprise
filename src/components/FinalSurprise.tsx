@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Gift, Sparkles, Heart, ChevronRight } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { storyData } from '../data/story';
-import { handleImageError } from '../utils/imageFallback';
+import { handleImageError, getSafeImageUrl } from '../utils/imageFallback';
 import { soundEngine } from '../utils/soundEngine';
 
 interface FinalSurpriseProps {
@@ -150,7 +150,7 @@ export const FinalSurprise: React.FC<FinalSurpriseProps> = ({ onComplete }) => {
             >
               <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-black relative">
                 <img
-                  src={storyData.bestPhoto.src}
+                  src={getSafeImageUrl(storyData.bestPhoto.src, 'best-photo')}
                   alt={storyData.girlfriendName}
                   onError={(e) => handleImageError(e, 'best-photo')}
                   className="w-full h-full object-cover"

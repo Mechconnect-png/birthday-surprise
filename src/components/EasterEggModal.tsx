@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Heart, X, Play } from 'lucide-react';
 import { storyData } from '../data/story';
 import { soundEngine } from '../utils/soundEngine';
+import { resolveAssetUrl } from '../utils/imageFallback';
 
 interface EasterEggModalProps {
   isOpen: boolean;
@@ -45,7 +46,7 @@ export const EasterEggModal: React.FC<EasterEggModalProps> = ({ isOpen, onClose 
             {storyData.secretVideo && !videoError ? (
               <div className="rounded-2xl overflow-hidden bg-black border border-white/10 aspect-video relative">
                 <video
-                  src={storyData.secretVideo}
+                  src={resolveAssetUrl(storyData.secretVideo)}
                   controls
                   autoPlay
                   onError={() => setVideoError(true)}

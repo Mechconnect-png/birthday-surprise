@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Heart, ChevronRight } from 'lucide-react';
 import { storyData } from '../data/story';
-import { handleImageError } from '../utils/imageFallback';
+import { handleImageError, getSafeImageUrl } from '../utils/imageFallback';
 import { soundEngine } from '../utils/soundEngine';
 
 interface UniverseFinaleProps {
@@ -77,7 +77,7 @@ export const UniverseFinale: React.FC<UniverseFinaleProps> = ({ onComplete }) =>
 
           <div className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full overflow-hidden border-2 border-white/40 shadow-[0_0_50px_rgba(244,114,182,0.6)]">
             <img
-              src={storyData.bestPhoto.src}
+              src={getSafeImageUrl(storyData.bestPhoto.src, 'best-photo')}
               alt={storyData.girlfriendName}
               onError={(e) => handleImageError(e, 'best-photo')}
               className="w-full h-full object-cover"
